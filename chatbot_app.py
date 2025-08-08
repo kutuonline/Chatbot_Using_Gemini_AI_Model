@@ -4,7 +4,7 @@ import streamlit as st
 import os
 import google.generativeai as genai
 
-load_dotenv()
+load_dotenv(".env")
 
 # Initialize Gemini-Pro 
 # genai.configure(api_key="AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo")
@@ -12,7 +12,7 @@ load_dotenv()
 
 # get_api_key = os.getenv("AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo")
 # get_api_key = "AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo"
-genai.configure(api_key = Secrets)
+genai.configure(api_key = "API_Key")
 
 model = genai.GenerativeModel("gemini-2.5-pro")
 
@@ -50,6 +50,7 @@ if prompt := st.chat_input("Ask anything"):
       st.markdown(response.text)
     except ValueError as e:
       st.error(f"Error accessing response text: {e}")
+
 
 
 
