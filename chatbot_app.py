@@ -1,3 +1,4 @@
+import dotenv
 from dotenv import load_dotenv
 # load_dotenv()
 
@@ -51,3 +52,4 @@ if prompt := st.chat_input("Ask anything"):
       st.markdown(response.text)
     except ValueError as e:
       st.error(f"Error accessing response text: {e}")
+
