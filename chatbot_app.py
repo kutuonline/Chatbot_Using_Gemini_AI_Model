@@ -19,11 +19,11 @@ def role_to_streamlit(role):
   else:
     return role
   
-# Add a Gemini Chat history object to Streamlit session state
+# Add a Gemini chat history object to Streamlit session state
 if "chat" not in st.session_state:
   st.session_state.chat = model.start_chat(history=[])
 
-# Display Form Title
+# Display form title
 st.title("Chat application using Gemini Pro")
 
 # Display chat messages from history above current input box
@@ -46,6 +46,7 @@ if prompt := st.chat_input("Ask anything"):
       st.markdown(response.text)
     except ValueError as e:
       st.error(f"Error accessing response text: {e}")
+
 
 
 
