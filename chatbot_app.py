@@ -7,7 +7,7 @@ import google.generativeai as genai
 load_dotenv()
 
 # Initialize Gemini-Pro 
-get_api_key = os.getenv()
+get_api_key = os.getenv("")
 genai.configure(api_key = get_api_key)
 
 model = genai.GenerativeModel("gemini-2.5-pro")
@@ -46,6 +46,7 @@ if prompt := st.chat_input("Ask anything"):
       st.markdown(response.text)
     except ValueError as e:
       st.error(f"Error accessing response text: {e}")
+
 
 
 
