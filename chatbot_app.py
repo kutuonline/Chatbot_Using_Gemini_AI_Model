@@ -11,7 +11,7 @@ load_dotenv()
 # genai.configure(api_key=os.getenv("AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo"))
 
 # get_api_key = os.getenv("AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo")
-get_api_key = Get_API_Key
+get_api_key = "AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo"
 genai.configure(api_key = get_api_key)
 
 model = genai.GenerativeModel("gemini-2.5-pro")
@@ -50,6 +50,7 @@ if prompt := st.chat_input("Ask anything"):
       st.markdown(response.text)
     except ValueError as e:
       st.error(f"Error accessing response text: {e}")
+
 
 
 
