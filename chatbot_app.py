@@ -1,20 +1,18 @@
 import dotenv
 from dotenv import load_dotenv
-load_dotenv()
-
 import streamlit as st
 import os
 import google.generativeai as genai
 
-# load_dotenv(".env")
+load_dotenv()
 
 # Initialize Gemini-Pro 
 # genai.configure(api_key="AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo")
 # genai.configure(api_key=os.getenv("AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo"))
 
 # get_api_key = os.getenv("AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo")
-get_api_key = "AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo"
-genai.configure(api_key = get_api_key)
+#get_api_key = "AIzaSyC9ZvfAwrmyoLYbA16gncvmQf20GBOrEbo"
+genai.configure(api_key = get_API_key)
 
 model = genai.GenerativeModel("gemini-2.5-pro")
 
@@ -52,5 +50,6 @@ if prompt := st.chat_input("Ask anything"):
       st.markdown(response.text)
     except ValueError as e:
       st.error(f"Error accessing response text: {e}")
+
 
 
