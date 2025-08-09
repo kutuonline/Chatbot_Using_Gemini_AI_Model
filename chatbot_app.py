@@ -1,15 +1,16 @@
+# import library
 import dotenv
 from dotenv import load_dotenv
 import streamlit as st
 import os
 import google.generativeai as genai
 
+# load environment
 load_dotenv()
 
-# Initialize Gemini-Pro 
+# initialize Gemini-Pro model and API
 get_api_key = os.getenv("API_Key")
 genai.configure(api_key = get_api_key)
-
 model = genai.GenerativeModel("gemini-2.5-pro")
 
 # Gemini uses 'model' for assistant; Streamlit uses 'assistant'
@@ -19,7 +20,7 @@ def role_to_streamlit(role):
   else:
     return role
   
-# Add a Gemini chat history object to Streamlit session state
+# chat history object and store into Streamlit session state
 if "chat" not in st.session_state:
   st.session_state.chat = model.start_chat(history=[])
 
@@ -41,29 +42,11 @@ if prompt := st.chat_input("Ask anything"):
 
   # Display last
   with st.chat_message("assistant"):
-    # st.markdown(response.text) --> ada error
+    # handling error
     try:
       st.markdown(response.text)
     except ValueError as e:
       st.error(f"Error accessing response text: {e}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
