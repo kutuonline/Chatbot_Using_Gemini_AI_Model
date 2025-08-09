@@ -26,6 +26,7 @@ if "chat" not in st.session_state:
 
 # Display form title
 st.title("Chat application using Gemini Pro")
+st.subt
 
 # Display chat messages from history above current input box
 for message in st.session_state.chat.history:
@@ -47,8 +48,3 @@ if prompt := st.chat_input("Ask anything"):
       st.markdown(response.text)
     except ValueError as e:
       st.error(f"Error accessing response text: {e}")
-
-
-
-
-
