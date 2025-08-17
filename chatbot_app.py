@@ -11,7 +11,7 @@ load_dotenv()
 # initialize Gemini-Pro model and API
 get_api_key = os.getenv("API_Key")
 genai.configure(api_key = get_api_key)
-model = genai.GenerativeModel("gemini-2.5-pro")
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 # Gemini uses 'model' for assistant; Streamlit uses 'assistant'
 def role_to_streamlit(role):
@@ -25,7 +25,7 @@ if "chat" not in st.session_state:
   st.session_state.chat = model.start_chat(history=[])
 
 # Display form title
-st.title("Chat application using Gemini Pro")
+st.title("Chat application using Gemini")
 
 # Display chat messages from history above current input box
 for message in st.session_state.chat.history:
@@ -47,4 +47,5 @@ if prompt := st.chat_input("Ask anything"):
       st.markdown(response.text)
     except ValueError as e:
       st.error(f"Error accessing response text: {e}")
+
 
